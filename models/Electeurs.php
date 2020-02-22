@@ -2,11 +2,12 @@
   class Electeurs {
     private $conn;
     private $table = 'electeurs';
-
+    private $table_condidat= 'condidats';
 
     public $id;
     public $name;
     public $firstname;
+    public $idC;
     
 
 
@@ -98,9 +99,10 @@
       name = :name,
       firstname = :firstname
       WHERE
-      id = :id';
+      idC = : idC';
 
-  // Prepare Statement
+  
+      // Prepare Statement
   $stmt = $this->conn->prepare($query);
 
   // Clean data
@@ -108,7 +110,7 @@
   $this->name = htmlspecialchars(strip_tags($this->name));
   $this->firstname = htmlspecialchars(strip_tags($this->firstname));
   
-  
+    
 
   // Bind data
   $stmt-> bindParam(':id', $this->id);
@@ -151,4 +153,9 @@
 
     return false;
     }
-  }
+  
+  
+
+  
+
+}
