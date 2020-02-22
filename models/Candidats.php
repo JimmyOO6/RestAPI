@@ -167,7 +167,27 @@
      return false;
   }
 
+  //get te big rkhiss
+public function getTheBigRkhiss(){
+  // Create query
+  $query = 'SELECT
+  id,
+  name,
+  firstname,
+  party,
+  MAX(nb_vote) AS nb_vote
+FROM
+  ' . $this->table .'';
 
+// Prepare statement
+$stmt = $this->conn->prepare($query);
+
+// Execute query
+$stmt->execute();
+
+return $stmt;
+
+}
 
   // Delete candidats
   public function delete() {
