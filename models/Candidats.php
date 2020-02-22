@@ -175,9 +175,8 @@ public function getTheBigRkhiss(){
   name,
   firstname,
   party,
-  MAX(nb_vote) AS nb_vote
-FROM
-  ' . $this->table .'';
+  nb_vote 
+  FROM ' . $this->table .' order by nb_vote DESC LIMIT 1';
 
 // Prepare statement
 $stmt = $this->conn->prepare($query);
